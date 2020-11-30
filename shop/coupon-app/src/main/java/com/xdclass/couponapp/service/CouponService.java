@@ -101,4 +101,8 @@ public class CouponService {
     public List<TCoupon> getTCouponByIds(List<Integer> ids) {
         return tCouponMapper.selectTCouponListByIds(ids);
     }
+    //影响性能的因素
+    //1、是否存在远程调用 HTTP、RPC Metrics 调用
+    //2、大量内存操作 list.contain() ==> set.contain()
+    //根据不同场景去进行分析，读多写少，读少写多，种种情况
 }
